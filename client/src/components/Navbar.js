@@ -22,11 +22,11 @@ const Navbar = () => {
               textDecoration: 'none',
             }}
           >
-            BoroBazar
+            MarketPlace
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {['DEMOS', 'CATEGORIES', 'DIETARY', 'SEARCH', 'SHOPS', 'PAGES'].map((page) => (
+            {['Home', 'CATEGORIES', 'Products'].map((page) => (
               <Button
                 key={page}
                 component={RouterLink}
@@ -39,9 +39,12 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Button color="inherit">ENGLISH - EN</Button>
+            
             <Button color="inherit" startIcon={<ShoppingCartIcon />}>
               CART
+            </Button>
+            <Button color="inherit" startIcon={<PersonIcon />}>
+              Login
             </Button>
             <Button color="inherit" startIcon={<PersonIcon />}>
               SIGN IN

@@ -64,7 +64,7 @@ const Promotions = () => {
         <Grid container spacing={2} sx={{ px: 2 }}>
           {promotions.map((promo, index) => (
             <Grid item xs={12} sm={6} md={4} lg={2} key={index}>
-              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', position: 'relative'}}>
                 <CardMedia
                   component="img"
                   height="140"
@@ -110,11 +110,11 @@ const Promotions = () => {
                     {promo.date}
                   </Typography>
                 </CardContent>
-                <Box sx={{ p: 1, backgroundColor: promo.tag === 'Discount' ? '#e3f2fd' : '#fff3e0' }}>
+                {/* <Box sx={{ p: 1, backgroundColor: promo.tag === 'Discount' ? '#e3f2fd' : '#fff3e0' }}>
                   <Typography variant="body2" color="primary" sx={{ fontWeight: 'bold' }}>
                     {promo.tag}
                   </Typography>
-                </Box>
+                </Box> */}
               </Card>
             </Grid>
           ))}
