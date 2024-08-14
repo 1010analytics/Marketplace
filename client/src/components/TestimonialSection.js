@@ -1,10 +1,6 @@
 import React from 'react';
 import Slider from 'react-slick';
-import {
-  Box,
-  Typography,
-  Avatar,
-} from '@mui/material';
+import { Box, Typography, Avatar, Card, CardContent, Rating } from '@mui/material';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import testimonial1 from '../images/Sunny-Lu.png';
@@ -17,18 +13,21 @@ const testimonials = [
     name: 'John Doe',
     position: 'Digital Marketing',
     review: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+    rating: 4,
   },
   {
     image: testimonial2,
     name: 'John Doe',
     position: 'CEO, Company',
     review: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+    rating: 5,
   },
   {
     image: testimonial3,
     name: 'John Doe',
     position: 'Customer',
     review: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+    rating: 3,
   },
 ];
 
@@ -37,47 +36,68 @@ const TestimonialSection = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    pauseOnHover: true,
-    arrows: false,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
-    <Box sx={{ maxWidth: '800px', margin: 'auto', padding: '20px' }}>
-      <Typography variant="h4" align="center" gutterBottom>
-        What Our Customers Say
-      </Typography>
-      <Slider {...settings}>
-        {testimonials.map((testimonial, index) => (
-          <Box key={index} sx={{ 
-            backgroundColor: '#f0f8ff', 
-            borderRadius: '10px', 
-            padding: '20px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            textAlign: 'center',
-          }}>
-            <Avatar
-              src={testimonial.image}
-              alt={testimonial.name}
-              sx={{ width: 80, height: 80, marginBottom: 2 }}
-            />
-            <Typography variant="h6" gutterBottom>
-              {testimonial.name}
-            </Typography>
-            <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-              {testimonial.position}
-            </Typography>
-            <Typography variant="body1">
-              {testimonial.review}
-            </Typography>
-          </Box>
-        ))}
-      </Slider>
+    <Box sx={{ backgroundColor: '#f5f5f5', padding: '50px 0' }}> 
+    {/* Background color applied here */}
+    <Box sx={{ mb: 2, px: 2 }}>
+        <Typography variant="h4" component="h2" sx={{ fontWeight: 'bold', mb: 2 }}>
+          Customer Reviews
+        </Typography>
+      </Box>
+      <Box sx={{ width: '80%', margin: '0 auto' }}>
+        <Slider {...settings}>
+          {testimonials.map((testimonial, index) => (
+            <Box key={index} sx={{ padding: '0 15px' }}>
+              <Card 
+                sx={{ 
+                  padding: '20px', 
+                  transition: 'transform 0.3s, box-shadow 0.3s', 
+                  '&:hover': {
+                    transform: 'translateY(-10px)', 
+                    boxShadow: '0 8px 16px rgba(0,0,0,0.3)' 
+                  } 
+                }} 
+              > {/* Hover effect added */}
+                <CardContent>
+                  <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '15px' }}>
+                    <Avatar src={testimonial.image} sx={{ width: 56, height: 56, marginRight: '15px' }} />
+                    <Box>
+                      <Typography variant="h6">{testimonial.name}</Typography>
+                      <Typography variant="body2" color="textSecondary">{testimonial.position}</Typography>
+                    </Box>
+                  </Box>
+                  <Typography variant="body2" color="textSecondary" gutterBottom>
+                    "{testimonial.review}"
+                  </Typography>
+                  <Rating value={testimonial.rating} readOnly />
+                </CardContent>
+              </Card>
+            </Box>
+          ))}
+        </Slider>
+      </Box>
     </Box>
   );
 };

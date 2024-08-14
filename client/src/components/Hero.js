@@ -4,6 +4,8 @@ import HeroSection from './Home'; // Assuming you've moved your hero section to 
 import Promotions from './Promotions';
 import Categories from './Categories';
 import TestimonialSection from './TestimonialSection';
+import NewsletterSection from './NewsletterSection';
+import Footer from './Footer';
 
 const Hero = () => {
   return (
@@ -12,6 +14,8 @@ const Hero = () => {
       <Promotions />
       <Categories />
       <TestimonialSection />
+      <NewsletterSection />
+      <Footer />
     </Box>
   );
 };
