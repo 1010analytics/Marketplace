@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Box,
   Typography,
@@ -62,11 +62,10 @@ const categories = [
   },
 ];
 
-const Categories = () => {
-  const [cartCount, setCartCount] = useState(0);
+const Categories = ({ setCartCount }) => {
 
   const handleAddToCart = () => {
-    setCartCount(cartCount + 1);
+    setCartCount(prevCount => prevCount + 1);
   };
 
   return (
@@ -97,9 +96,9 @@ const Categories = () => {
                 component="img"
                 image={category.image}
                 alt={category.title}
-                sx={{ height: '180px', objectFit: 'cover', width: '100%' }} // Reduced height
+                sx={{ height: '180px', objectFit: 'cover', width: '100%' }}
               />
-              <Box sx={{ padding: '8px 8px 0px 8px' }}> {/* Removed bottom padding */}
+              <Box sx={{ padding: '8px 8px 0px 8px' }}>
                 <Typography gutterBottom variant="h6" component="div" sx={{ fontWeight: 'bold', mb: 1 }}>
                   {category.title}
                 </Typography>

@@ -1,12 +1,12 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Button, Container, Box } from '@mui/material';
+import { AppBar, Toolbar, Typography, Button, Container, Box, Badge } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
 
-const Navbar = () => {
+const Navbar = ({ cartCount, userName }) => {
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#006400' }}>
+    <AppBar position="fixed" sx={{ backgroundColor: '#006400' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -39,16 +39,25 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            
-            <Button color="inherit" startIcon={<ShoppingCartIcon />}>
-              CART
+            <Button color="inherit" component={RouterLink} to="/cart">
+              <Badge badgeContent={cartCount} color="error">
+                <ShoppingCartIcon />
+              </Badge>
             </Button>
-            <Button color="inherit" startIcon={<PersonIcon />}>
-              Login
-            </Button>
-            <Button color="inherit" startIcon={<PersonIcon />}>
-              SIGN IN
-            </Button>
+            {userName ? (
+              <Typography variant="h6" sx={{ ml: 2 }}>
+                {userName}
+              </Typography>
+            ) : (
+              <>
+                <Button color="inherit" startIcon={<PersonIcon />} component={RouterLink} to="/login">
+                  Login
+                </Button>
+                <Button color="inherit" startIcon={<PersonIcon />} component={RouterLink} to="/signup" >
+                  SIGN IN
+                </Button>
+              </>
+            )}
           </Box>
         </Toolbar>
       </Container>
