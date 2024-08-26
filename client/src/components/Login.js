@@ -129,7 +129,7 @@ function Login() {
           </Typography>
           <input type="text" placeholder="Username" style={styles.input} />
           <input type="password" placeholder="Password" style={styles.input} />
-          <button style={styles.button}  >Login</button>
+          <a href="/home"><button style={styles.button}  >Login</button></a>
           <div style={styles.options}>
             <a href="/forgot-password" style={styles.link}>Forgot Password?</a>
             <div style={styles.social}>

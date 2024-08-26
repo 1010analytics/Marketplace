@@ -10,7 +10,7 @@ function Register() {
       justifyContent: 'center',
       alignItems: 'center',
       height: '100vh',
-      backgroundColor: '#f0f0f0',
+      backgroundColor: '#ffffff',
       flexDirection: 'column', // Default to column direction for mobile
       padding: '20px',
       boxSizing: 'border-box',
@@ -153,7 +153,7 @@ function Register() {
           <input type="text" placeholder="Username" style={styles.input} />
           <input type="password" placeholder="Password" style={styles.input} />
           <input type="password" placeholder="Confirm Password" style={styles.input} />
-          <button style={styles.button}>Register</button>
+          <a href="/login"><button style={styles.button}>Register</button></a>
           <div style={styles.options}>
             <div style={styles.social}>
               <button style={{ ...styles.socialButton, ...styles.facebook }}>
