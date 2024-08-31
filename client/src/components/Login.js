@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from '../images/login.avif'; // Import your image
 import { Typography } from '@mui/material';
 import { FaFacebookF, FaTwitter, FaGoogle } from 'react-icons/fa'; // Import icons
+import { useNavigate } from 'react-router-dom';
 
-function Login() {
+function Login({ setUserName }) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Hook for navigation
+
+  const handleLogin = () => {
+    // For demonstration, assume login is always successful
+    setUserName(username);
+    navigate('/'); // Redirect to home page or other protected route
+  };
+
   const styles = {
     outerContainer: {
       display: 'flex',
@@ -56,7 +67,7 @@ function Login() {
     link: {
       color: '#006400',
       textDecoration: 'none',
-      fontWeight:'bold'
+      fontWeight: 'bold',
     },
     social: {
       marginTop: '20px',
@@ -113,7 +124,7 @@ function Login() {
       fontWeight: 'bold',
       fontSize: '24px',
       marginBottom: '20px',
-      color:'#006400'
+      color: '#006400',
     },
     icon: {
       marginRight: '10px',
@@ -125,11 +136,28 @@ function Login() {
       <div style={styles.container}>
         <div style={styles.form}>
           <Typography variant="h4" style={styles.heading}>
-            Welcome to Groceriery Story
+            Welcome to Market Place Store
           </Typography>
-          <input type="text" placeholder="Username" style={styles.input} />
-          <input type="password" placeholder="Password" style={styles.input} />
-          <a href="/home"><button style={styles.button}  >Login</button></a>
+          <input
+            type="text"
+            placeholder="Username"
+            style={styles.input}
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            style={styles.input}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button
+            style={styles.button}
+            onClick={handleLogin}
+          >
+            Login
+          </button>
           <div style={styles.options}>
             <a href="/forgot-password" style={styles.link}>Forgot Password?</a>
             <div style={styles.social}>
@@ -154,3 +182,56 @@ function Login() {
 }
 
 export default Login;
+
+
+
+// import React, { useState } from 'react';
+// import { Typography, Button, TextField, Box } from '@mui/material';
+// import { useNavigate } from 'react-router-dom';
+
+// const Login = ({ setUserName }) => {
+//   const [username, setUsername] = useState('');
+//   const [password, setPassword] = useState('');
+//   const navigate = useNavigate();
+
+//   const handleLogin = () => {
+//     // For demonstration, assume login is always successful
+//     setUserName(username);
+//     navigate('/'); // Redirect to home page or other protected route
+//   };
+
+//   return (
+//     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mt: 5 }}>
+//       <Typography variant="h4" gutterBottom>
+//         Login
+//       </Typography>
+//       <TextField
+//         label="Username"
+//         variant="outlined"
+//         margin="normal"
+//         fullWidth
+//         value={username}
+//         onChange={(e) => setUsername(e.target.value)}
+//       />
+//       <TextField
+//         label="Password"
+//         type="password"
+//         variant="outlined"
+//         margin="normal"
+//         fullWidth
+//         value={password}
+//         onChange={(e) => setPassword(e.target.value)}
+//       />
+//       <Button
+//         variant="contained"
+//         color="primary"
+//         onClick={handleLogin}
+//         sx={{ mt: 3 }}
+//       >
+//         Login
+//       </Button>
+//     </Box>
+//   );
+// };
+
+// export default Login;

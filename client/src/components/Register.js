@@ -59,8 +59,9 @@ function Register() {
       textAlign: 'center',
     },
     link: {
-      color: '#90EE90',
+      color: '#006400',
       textDecoration: 'none',
+      fontWeight: 700
     },
     social: {
       marginTop: '20px',
@@ -104,6 +105,7 @@ function Register() {
     },
     imageContainer: {
       flex: 1,
+     
       backgroundColor: '#f8f8f8',
       display: 'flex',
       justifyContent: 'center',
@@ -117,7 +119,8 @@ function Register() {
     },
     heading: {
       textAlign: 'center',
-      fontWeight: 'bold',
+      color: '#006400',
+      fontWeight: 700,
       fontSize: '24px',
       marginBottom: '20px',
     },
@@ -146,7 +149,7 @@ function Register() {
         
         <div style={styles.form}>
           <Typography variant="h4" style={styles.heading}>
-            Register for Groceriery Story
+            Register for Market Store Place 
           </Typography>
           <input type="text" placeholder="Full Name" style={styles.input} />
           <input type="email" placeholder="Email" style={styles.input} />
@@ -154,6 +157,9 @@ function Register() {
           <input type="password" placeholder="Password" style={styles.input} />
           <input type="password" placeholder="Confirm Password" style={styles.input} />
           <a href="/login"><button style={styles.button}>Register</button></a>
+          <Typography variant="h4" style={styles.heading}>
+            OR
+          </Typography>
           <div style={styles.options}>
             <div style={styles.social}>
               <button style={{ ...styles.socialButton, ...styles.facebook }}>
@@ -166,7 +172,7 @@ function Register() {
                 <FaGoogle style={styles.icon} /> Sign up with Google
               </button>
             </div>
-            <a href="/login" style={styles.link}>Already have an account? Login</a>
+            <a href="/login" style={styles.link} sx={{color: '#006400' ,}}>Already have an account? Login</a>
           </div>
           
         </div>
